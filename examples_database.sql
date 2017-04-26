@@ -284,7 +284,7 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `salesRepEmployeeNumber` int(11) DEFAULT NULL,
   `creditLimit` double DEFAULT NULL,
   PRIMARY KEY (`customerNumber`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=497 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=497 ;
 
 --
 -- Dumping data for table `customers`
@@ -430,7 +430,7 @@ CREATE TABLE IF NOT EXISTS `employees` (
   `file_url` varchar(250) CHARACTER SET utf8 NOT NULL,
   `jobTitle` varchar(50) NOT NULL,
   PRIMARY KEY (`employeeNumber`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1703 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1703 ;
 
 --
 -- Dumping data for table `employees`
@@ -9023,7 +9023,7 @@ CREATE TABLE IF NOT EXISTS `offices` (
   `postalCode` varchar(15) NOT NULL,
   `territory` varchar(10) NOT NULL,
   PRIMARY KEY (`officeCode`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `offices`
@@ -9051,7 +9051,7 @@ CREATE TABLE IF NOT EXISTS `orderdetails` (
   `priceEach` double NOT NULL,
   `orderLineNumber` smallint(6) NOT NULL,
   PRIMARY KEY (`orderNumber`,`productCode`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `orderdetails`
@@ -12072,7 +12072,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `comments` text,
   `customerNumber` int(11) NOT NULL,
   PRIMARY KEY (`orderNumber`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10426 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10426 ;
 
 --
 -- Dumping data for table `orders`
@@ -12418,7 +12418,7 @@ CREATE TABLE IF NOT EXISTS `payments` (
   `paymentDate` datetime NOT NULL,
   `amount` double NOT NULL,
   PRIMARY KEY (`customerNumber`,`checkNumber`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `payments`
@@ -12711,7 +12711,7 @@ CREATE TABLE IF NOT EXISTS `productlines` (
   `htmlDescription` mediumtext,
   `image` mediumblob,
   PRIMARY KEY (`productLine`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `productlines`
@@ -12743,7 +12743,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `buyPrice` double NOT NULL,
   `MSRP` double NOT NULL,
   PRIMARY KEY (`productCode`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
