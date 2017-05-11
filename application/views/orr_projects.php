@@ -12,13 +12,13 @@
     </head>
     <body>
         <div>
-            <a href='<?php echo site_url('orr_projects/customers_management') ?>'>Customers</a> |
-            <a href='<?php echo site_url('orr_projects/orders_management') ?>'>Orders</a> |
-            <a href='<?php echo site_url('orr_projects/products_management') ?>'>Products</a> |
-            <a href='<?php echo site_url('orr_projects/offices_management') ?>'>Offices</a> | 
-            <a href='<?php echo site_url('orr_projects/employees_management') ?>'>Employees</a> |		 
-            <a href='<?php echo site_url('orr_projects/film_management') ?>'>Films</a> |
-            <a href='<?php echo site_url('orr_projects/multigrids') ?>'>Multigrid [BETA]</a>
+            <a href='<?php echo site_url('orr_projects/my_sys') ?>'>โปรแกรม</a> |
+            <a href='<?php echo site_url('orr_projects/my_user') ?>'>ผู้ใช้งาน</a> |
+            <a href='<?php echo site_url('orr_projects/my_group') ?>'>กลุ่มผู้ใช้งาน</a> |
+            <a href='<?php echo site_url('orr_projects/my_can') ?>'>สิทธิ์การใช้งาน</a> | 
+            <a href='<?php echo site_url('orr_projects/my_datafield') ?>'>คำจำกัดความ ข้อมูล</a> |		 
+            <a href='<?php echo site_url('orr_projects/my_registration') ?>'>การลงทะเบียนใช้งาน</a> |
+            <a href='<?php echo site_url('orr_projects/my_menu') ?>'>เมนูโครงการ</a>
         </div>
         <div style='height:20px;'></div>  
         <div>
