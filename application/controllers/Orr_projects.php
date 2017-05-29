@@ -41,6 +41,8 @@ class Orr_projects extends CI_Controller {
             $crud->required_fields('sys_id');
             $crud->columns('sys_id', 'title', 'description');
             $crud->display_as('sys_id','รหัส')->display_as('title','ชื่อโปรแกรม'); //ชื่อที่แสดงแทน
+            $crud->field_type('sec_user', 'readonly');
+            $crud->field_type('sec_time', 'readonly');
             $output = $crud->render();
 
             $this->set_view($output);
