@@ -1,7 +1,5 @@
 <?php
 
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,22 +7,23 @@ if (!defined('BASEPATH'))
  */
 
 /**
-  | Description of Orr_projects
-  |
-  | @author it
+ * Description of Mnu_initial
+ * ตัวอย่างหน้าจอเริ่มต้น
+ * @link Orr-projects/index.php/Mnu_initial/
+ * @author suchart bunhachirat
  */
-class Orr_projects extends CI_Controller {
+class Mnu_initial extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
         $this->load->database('orr-projects');
         $this->load->helper('url');
-
         $this->load->library('grocery_CRUD');
+        $this->load->library('orr_projects');
     }
 
     private function set_view($output) {
-        $this->load->view('orr_projects.php', (array) $output);
+        $this->load->view('initial.php', (array) $output);
     }
 
     public function index() {
@@ -33,16 +32,19 @@ class Orr_projects extends CI_Controller {
 
     public function my_sys() {
         try {
-            $crud = new grocery_CRUD();
+            //$crud = new grocery_CRUD();
+            $crud = new Orr_projects();
 
             $crud->set_theme('datatables');
             $crud->set_table('my_sys');
             $crud->set_subject('โปรแกรม');
             $crud->required_fields('sys_id');
             $crud->columns('sys_id', 'title', 'description');
-            $crud->display_as('sys_id','รหัส')->display_as('title','ชื่อโปรแกรม'); //ชื่อที่แสดงแทน
-            $crud->field_type('sec_user', 'readonly');
-            $crud->field_type('sec_time', 'readonly');
+            $crud->display_as('sys_id', 'รหัส')->display_as('title', 'ชื่อโปรแกรม'); //
+
+            $crud->field_type('any_use', 'dropdown', array('0' => '0 ระบุ', '1' => '1 ไม่ระบุ'));
+            //$crud->field_type('sec_user', 'readonly'); //อ่านได้อย่างเดียว
+            //$crud->field_type('sec_time', 'readonly');
             $output = $crud->render();
 
             $this->set_view($output);
