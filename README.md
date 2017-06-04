@@ -8,4 +8,6 @@ CodeIgniter is an Application Development Framework﻿ + Grocery CRUD + orr-proj
 --- database.php
 # Codeing
 - PHP Style Guide https://codeigniter.com/user_guide/general/styleguide.html
+# Function
+default_as : Default value of the field.
 
