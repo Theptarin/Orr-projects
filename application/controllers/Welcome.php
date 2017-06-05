@@ -1,11 +1,6 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  * Description of Welcome
@@ -14,6 +9,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author suchart bunhachirat
  */
 class Welcome extends CI_Controller {
+    /**
+     * Welcome Page for this controller.
+     * @todo Home Page for Orr projects.
+     */
 
     private $use_set = ['0' => '0 ระบุ', '1' => '1 ไม่ระบุ'];
     private $aut_set = ['0' => '0 ไม่ได้', '1' => '1 อ่านได้', '2' => '2 เขียนได้', '3' => '3 ลบได้'];
