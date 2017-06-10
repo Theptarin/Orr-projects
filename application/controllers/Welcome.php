@@ -15,6 +15,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Welcome extends CI_Controller {
 
+    private $use_set = ['0' => '0 ระบุ', '1' => '1 ไม่ระบุ'];
+    private $aut_set = ['0' => '0 ไม่ได้', '1' => '1 อ่านได้', '2' => '2 เขียนได้', '3' => '3 ลบได้'];
+
     public function __construct() {
         parent::__construct();
         $this->load->database('orr-projects');
@@ -38,13 +41,17 @@ class Welcome extends CI_Controller {
             $crud->set_theme('datatables');
             $crud->set_table('my_sys');
             $crud->set_subject('โปรแกรม');
-            $crud->required_fields(array('sys_id','any_use','any_user','aut_user','aut_group','aut_any','aut_god'));
-            $crud->default_as('any_use', 1)->default_as('aut_user', 3)->default_as('aut_group', 2)->default_as('aut_any', 1);
             $crud->columns('sys_id', 'title', 'description');
+            $crud->required_fields(array('sys_id', 'any_use', 'any_user', 'aut_user', 'aut_group', 'aut_any', 'aut_god'));
+            $crud->default_as('any_use', 1)->default_as('aut_user', 3)->default_as('aut_group', 2)->default_as('aut_any', 1)
+                    ->default_as('aut_god', 1);
             $crud->display_as('sys_id', 'รหัส')->display_as('aut_user', 'สิทธ์เจ้าของ')->display_as('title', 'ชื่อโปรแกรม');
 
-            $crud->field_type('any_use', 'dropdown', array('0' => '0 ระบุ', '1' => '1 ไม่ระบุ'));
-           
+            $crud->field_type('any_use', 'dropdown', $this->use_set)->field_type('aut_user', 'dropdown', $this->aut_set)
+                    ->field_type('aut_group', 'dropdown', $this->aut_set)->field_type('aut_any', 'dropdown', $this->aut_set)
+                    ->field_type('aut_god', 'dropdown', $this->use_set);
+            $crud->set_relation('aut_can_from', 'my_sys', '{sys_id}  -  {title}');
+
             $output = $crud->render();
 
             $this->set_view($output);
