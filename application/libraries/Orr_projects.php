@@ -31,7 +31,7 @@ class Orr_projects extends Grocery_CRUD {
             /**
              * read only Orr-projects fields
              */
-            $this->field_type('id', 'readonly')->field_type('sec_user', 'readonly')->field_type('sec_time', 'readonly')
+            $this->field_type('id', 'readonly')->field_type('sec_time', 'readonly')
                     ->field_type('sec_ip', 'readonly')->field_type('sec_script', 'readonly');
             /**
              * default value Orr-projects fields

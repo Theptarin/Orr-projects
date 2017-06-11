@@ -50,6 +50,7 @@ class Welcome extends CI_Controller {
                     ->field_type('aut_group', 'dropdown', $this->aut_set)->field_type('aut_any', 'dropdown', $this->aut_set)
                     ->field_type('aut_god', 'dropdown', $this->use_set);
             $crud->set_relation('aut_can_from', 'my_sys', '{sys_id}  -  {title}');
+            $crud->set_relation('sec_user', 'my_user', '{user}  -  {fname} {lname}');
 
             $output = $crud->render();
 
