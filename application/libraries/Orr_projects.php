@@ -33,6 +33,7 @@ class Orr_projects extends Grocery_CRUD {
              *  - Read only fields
              */
             $this->field_type('id', 'readonly')->field_type('sec_time', 'readonly')->field_type('sec_ip', 'readonly')->field_type('sec_script', 'readonly');
+            $this->callback_before_insert(array($this,'before_insert_callback'));
         } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
@@ -100,6 +101,16 @@ class Orr_projects extends Grocery_CRUD {
      */
     protected function get_integer_input($field_info, $value) {
         return parent::get_integer_input($field_info, $this->get_value($field_info, $value));
+    }
+    /**
+     * Set filed value callback
+     * @param array $post_array
+     * @return string
+     */
+    
+    function before_insert_callback($post_array){
+       $post_array['sec_ip']='10.9.9.9';
+        return $post_array;
     }
 
 }
