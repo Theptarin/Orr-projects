@@ -29,15 +29,10 @@ class Orr_projects extends Grocery_CRUD {
         parent::__construct();
         try {
             /**
-             * read only Orr-projects fields
+             * Orr-projects
+             *  - Read only fields
              */
-            $this->field_type('id', 'readonly')->field_type('sec_time', 'readonly')
-                    ->field_type('sec_ip', 'readonly')->field_type('sec_script', 'readonly');
-            /**
-             * default value Orr-projects fields
-             * $this->default_as('title', 'Default title')->default_as('sec_user', 'Default User');
-             */
-            
+            $this->field_type('id', 'readonly')->field_type('sec_time', 'readonly')->field_type('sec_ip', 'readonly')->field_type('sec_script', 'readonly');
         } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
@@ -62,17 +57,25 @@ class Orr_projects extends Grocery_CRUD {
         }
         return $this;
     }
+    /**
+     * 
+     * @param object $field_info
+     * @param $value
+     * @return void
+     */
+    private function get_value($field_info, $value) {
+        if (isset($this->default_as[$field_info->name]) && empty($value)) {
+            $value = $this->default_as[$field_info->name];
+        }
+        return $value;
+    }
 
     /**
      * 
      * Override method for default value.
      */
     protected function get_string_input($field_info, $value) {
-        if (isset($this->default_as[$field_info->name]) && empty($value)) {
-            $value = $this->default_as[$field_info->name];
-        }
-        echo '74:' . $field_info->name .'-'.$value;
-        return parent::get_string_input($field_info, $value);
+        return parent::get_string_input($field_info, $this->get_value($field_info, $value));
     }
 
     /**
@@ -80,35 +83,23 @@ class Orr_projects extends Grocery_CRUD {
      * Override method for default value.
      */
     protected function get_readonly_input($field_info, $value) {
-        if (isset($this->default_as[$field_info->name]) && empty($value)) {
-            $value = $this->default_as[$field_info->name];
-        }
-        echo '86:' . $field_info->name .'-'.$value;
-        return parent::get_readonly_input($field_info, $value);
+        return parent::get_readonly_input($field_info, $this->get_value($field_info, $value));
     }
-    
+
     /**
      * 
      * Override method for default value.
      */
     protected function get_dropdown_input($field_info, $value) {
-        if (isset($this->default_as[$field_info->name]) && empty($value)) {
-            $value = $this->default_as[$field_info->name];
-        }
-        echo '98:' . $field_info->name .'-'.$value;
-        return parent::get_dropdown_input($field_info, $value);
+        return parent::get_dropdown_input($field_info, $this->get_value($field_info, $value));
     }
-    
+
     /**
      * 
      * Override method for default value.
      */
     protected function get_integer_input($field_info, $value) {
-        if (isset($this->default_as[$field_info->name]) && empty($value)) {
-            $value = $this->default_as[$field_info->name];
-        }
-        echo '110:' . $field_info->name .'-'.$value;
-        return parent::get_integer_input($field_info, $value);
+        return parent::get_integer_input($field_info, $this->get_value($field_info, $value));
     }
 
 }
