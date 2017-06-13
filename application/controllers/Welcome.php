@@ -43,7 +43,7 @@ class Welcome extends CI_Controller {
             $crud->columns('sys_id', 'title', 'description');
             $crud->required_fields(array('sys_id', 'any_use', 'any_user', 'aut_user', 'aut_group', 'aut_any', 'aut_god'));
             $crud->default_as('any_use', 1)->default_as('aut_user', 3)->default_as('aut_group', 2)->default_as('aut_any', 1)
-                    ->default_as('aut_god', 1)->default_as('sec_ip',$this->input->ip_address());
+                    ->default_as('aut_god', 1);
             $crud->display_as('sys_id', 'รหัส')->display_as('aut_user', 'สิทธ์เจ้าของ')->display_as('title', 'ชื่อโปรแกรม');
 
             $crud->field_type('any_use', 'dropdown', $this->use_set)->field_type('aut_user', 'dropdown', $this->aut_set)
