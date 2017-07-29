@@ -1,8 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Description of Bootstrap
- *
- * @author it
+ * Testing Bootstrap view
+ * @author suchart bunhachirat
  */
 class Bootstrap extends CI_Controller{
     public function index() {

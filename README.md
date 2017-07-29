@@ -1,5 +1,5 @@
 # Orr-projects
-CodeIgniter + Grocery CRUD + Bootstrap + orr-projects is an Application Development Framework﻿ 
+CodeIgniter + Grocery CRUD + Login-GroceryCrud + Bootstrap + Orr-projects is an Application Development Framework﻿ 
 # Testing
 - CRUD Examples http://127.0.0.1/Orr-projects/index.php/examples/
 - Bootstrap Examples http://getbootstrap.com/getting-started/
