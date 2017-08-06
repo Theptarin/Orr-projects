@@ -17,13 +17,18 @@ class Tests extends CI_Controller {
         parent::__construct();
         $this->load->helper('url');
     }
+    
+    private function set_view($output) {
+        $this->load->view('test_home', (array) $output);
+    }
 
     public function index() {
-        $this->load->view("test_home");
+        $output = "This is output.";
+        $this->set_view((object) ['output' => $output, 'js_files' => array() , 'css_files' => array(base_url('assets/bootstrap/css/bootstrap.min.css'),base_url('assets/stylesheet/css/login.css'))]);
     }
-
-    public function login() {
-        $this->load->view("test_login");
+    
+    public function login(){
+        $this->load->view('login');
     }
-
+    
 }
