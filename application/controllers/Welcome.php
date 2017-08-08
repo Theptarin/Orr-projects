@@ -30,7 +30,7 @@ class Welcome extends CI_Controller {
     }
 
     public function index() {
-        $this->set_view((object) array('output' => '', 'js_files' => array(), 'css_files' => array()));
+        $this->set_view((object) array('output' => '', 'js_files' => array(''), 'css_files' => array()));
     }
 
     public function my_sys() {

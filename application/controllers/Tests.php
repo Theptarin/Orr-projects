@@ -24,7 +24,7 @@ class Tests extends CI_Controller {
 
     public function index() {
         $output = "This is output.";
-        $this->set_view((object) ['output' => $output, 'js_files' => array() , 'css_files' => array(base_url('assets/bootstrap/css/bootstrap.min.css'),base_url('assets/stylesheet/css/login.css'))]);
+        $this->set_view((object) ['output' => $output, 'js_files' => array(base_url('assets/jquery/jquery-3.2.1.min.js'),base_url('assets/jquery/jquery-3.2.1.min.js')) , 'css_files' => array(base_url('assets/bootstrap/css/bootstrap.min.css'))]);
     }
     
     public function login(){

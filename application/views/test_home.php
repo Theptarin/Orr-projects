@@ -31,22 +31,30 @@ Testing for orr-projects
         <div>
             <?php echo $output; ?>
         </div>
-        <form class="form-signin"action="/action_page.php">
-            <div >
-                <label><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+        <div class="jumbotron text-center">
+            <h1>My First Bootstrap Page</h1>
+            <p>Resize this responsive page to see the effect!</p> 
+        </div>
 
-                <label><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-
-                <button type="submit">Login</button>
-                <input type="checkbox" checked="checked"> Remember me
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3>Column 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Column 2</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Column 3</h3>        
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                </div>
             </div>
+        </div>
 
-            <div style="background-color:#f1f1f1">
-                <button type="button" >Cancel</button>
-                <span >Forgot <a href="#">password?</a></span>
-            </div>
-        </form>
     </body>
 </html>

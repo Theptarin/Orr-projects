@@ -13,7 +13,6 @@
     </head>
     <body>
         <div>
-            <a href='<?php echo site_url('') ?>'>หน้าหลัก</a> |
             <a href='<?php echo site_url('Welcome/my_sys') ?>'>โปรแกรม</a> |
             <a href='<?php echo site_url('Welcome/my_user') ?>'>ผู้ใช้งาน</a> |
             <a href='<?php echo site_url('Welcome/my_group') ?>'>กลุ่มผู้ใช้งาน</a> |
