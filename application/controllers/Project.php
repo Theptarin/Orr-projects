@@ -1,17 +1,18 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Description of Welcome
- *
- * @author it
+ * Description of Project
+ * ตัวอย่างหน้าจอเริ่มต้น
+ * @link Orr-projects/index.php/Project/
+ * @author suchart bunhachirat
  */
-class Welcome extends CI_Controller {
+class Project extends CI_Controller {
+    /**
+     * Project Page for this controller.
+     * @todo Home Page for Orr projects.
+     */
 
     private $use_set = ['0' => '0 ระบุ', '1' => '1 ไม่ระบุ'];
     private $aut_set = ['0' => '0 ไม่ได้', '1' => '1 อ่านได้', '2' => '2 เขียนได้', '3' => '3 ลบได้'];
@@ -25,16 +26,11 @@ class Welcome extends CI_Controller {
     }
 
     private function set_view($output) {
-        $this->load->view('welcome_home', (array) $output);
+        $this->load->view('project_home.php', (array) $output);
     }
 
     public function index() {
-        $output = "This is output.";
-        $this->set_view((object) ['output' => $output, 'js_files' => array(base_url('assets/jquery/jquery-3.2.1.min.js'), base_url('assets/jquery/jquery-3.2.1.min.js')), 'css_files' => array(base_url('assets/bootstrap/css/bootstrap.min.css'))]);
-    }
-
-    public function login() {
-        $this->load->view('login');
+        $this->set_view((object) array('output' => '', 'js_files' => array(''), 'css_files' => array()));
     }
 
     public function my_sys() {
@@ -55,8 +51,8 @@ class Welcome extends CI_Controller {
                     ->field_type('aut_god', 'dropdown', $this->use_set);
             $crud->set_relation('aut_can_from', 'my_sys', '{sys_id}  -  {title}');
             $crud->set_relation('sec_user', 'my_user', '{user}  -  {fname} {lname}');
-
-
+            
+            
             $output = $crud->render();
 
             $this->set_view($output);
@@ -64,5 +60,4 @@ class Welcome extends CI_Controller {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
     }
-
 }

@@ -21,19 +21,16 @@ Testing for orr-projects
         // put your code here
         ?>
         <div>
-            <a href='<?php echo index_page() ?>'>index_page</a> |
-            <a href='<?php echo site_url() ?>'>site_url</a> |
-            <a href='<?php echo base_url() ?>'>base_url</a> |
-            <a href='<?php echo current_url() ?>'>current_url</a> |
-            <a href='<?php echo uri_string() ?>'>uri_string</a> | 
-            <?php echo anchor(current_url(), 'anchor', ['title' => 'The Anchor!']) ?>
+            <?php echo anchor(site_url(), 'หน้าหลัก', ['title' => 'ไปที่หน้าหลักของเว๊บไซต์ หรือโหลดหน้าหลักใหม่']) ?> |
+            <?php echo anchor(current_url(), 'อ๋อโปรเจค', ['title' => 'ไปที่หน้าหลักของโปรเจค หรือโหลดหน้าโปรเจคใหม่']) ?> |
+            <?php echo anchor(uri_string(), 'เข้าสู่ระบบ', ['title' => 'ไปที่หน้าเข้าระบบอื่นๆ']) ?>
         </div> <div style='height:20px;'></div>  
         <div>
             <?php echo $output; ?>
         </div>
         <div class="jumbotron text-center">
-            <h1>My First Bootstrap Page</h1>
-            <p>Resize this responsive page to see the effect!</p> 
+            <h1>หน้าหลักของ อ๋อโปรเจค</h1>
+            <p>ปรับขนาดหน้าเพจเพื่อดูผลการจัดหน้าจอ!</p> 
         </div>
 
         <div class="container">
