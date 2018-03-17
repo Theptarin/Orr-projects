@@ -6,6 +6,10 @@ CodeIgniter + Grocery CRUD + Login-GroceryCrud + Bootstrap + Orr-projects is an 
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+- Java SE Downloads - NetBeans + JDK Bundle - Oracle http://www.oracle.com/technetwork/articles/javase/jdk-netbeans-jsp-142931.html
+- Clone or download https://github.com/Theptarin/Orr-projects
+
+
 ### Prerequisites
 
 What things you need to install the software and how to install them
