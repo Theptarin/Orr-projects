@@ -60,4 +60,20 @@ class Project extends CI_Controller {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
     }
+    
+     public function my_user() {
+        try {
+            $crud = new Orr_projects();
+
+            $crud->set_theme('datatables');
+            $crud->set_table('my_user');
+            $crud->set_subject('ผู้ใช้งาน');        
+            
+            $output = $crud->render();
+
+            $this->set_view($output);
+        } catch (Exception $e) {
+            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
+        }
+    }
 }
