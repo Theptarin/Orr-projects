@@ -7,18 +7,35 @@
  */
 
 /**
- * Description of Orr_authorize
+ * Orr_authorize : 
  *
  * @author it
  */
 class Orr_authorize extends CI_Model {
-    
+
+    public $user;
+    public $pass;
+
     /**
-     * Login status
+     * 
+     */
+    public function __construct() {
+        parent::__construct();
+        $this->load->database('orr-projects');
+    }
+
+    /**
+     * getSinginStatus : return singin status
      * @return string connected , not_authorized , unknown
      */
-    public function getLoginStatus(){
-        
+    public function get_singin_status() {
+        $sql = "SELECT * FROM `my_user` WHERE  `user` = ? AND `status` = ?";
+        $query = $this->db->query($sql,  array($this->user , 0));
+        if($query->num_rows() === 1){
+            return 'connected';
+        }else{
+            return 'unknown';
+        }
     }
-    
+
 }

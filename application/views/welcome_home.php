@@ -23,7 +23,7 @@ Testing for orr-projects
         <div>
             <?php echo anchor(site_url(), 'หน้าหลัก', ['title' => 'ไปที่หน้าหลักของเว๊บไซต์ หรือโหลดหน้าหลักใหม่']) ?> |
             <?php echo anchor(site_url('Project'), 'อ๋อโปรเจค', ['title' => 'ไปที่หน้าหลักของโปรเจค หรือโหลดหน้าโปรเจคใหม่']) ?> |
-            <?php echo anchor(site_url('Welcome/login'), 'เข้าสู่ระบบ', ['title' => 'ไปที่หน้าเข้าระบบอื่นๆ']) ?>
+            <?php echo anchor(site_url('Welcome/singin'), 'เข้าสู่ระบบ', ['title' => 'ไปที่หน้าเข้าระบบอื่นๆ']) ?>
         </div> <div style='height:20px;'></div>  
         <div>
             <?php echo $output; ?>
