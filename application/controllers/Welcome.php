@@ -38,7 +38,7 @@ class Welcome extends CI_Controller {
     }
 
     /**
-     * singin_check : 
+     * ตรวจสอบรหัสผู้ใช้งาน จากหน้าจอเข้าระบบ
      * 
      */
     public function singin_check() {
