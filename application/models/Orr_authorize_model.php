@@ -9,45 +9,67 @@
  */
 class Orr_authorize_model extends CI_Model {
 
-    protected $user;
-
     /**
      * Class construct
      * 
      */
     public function __construct() {
         parent::__construct();
+        $this->load->library('session');
         $this->load->database('orr-projects');
     }
-
+    
     /**
-     * เช็คข้อมูลผู้ใช้งานในฐานข้อมูล ค่าที่ได้ connected=เข้าใช้งานได้ , unknown=ไม่มีข้อมูล
-     * @param string $user username
-     * @param string $pass password
-     * @return string connected , not_authorized , unknown
+     * ตรวจสอบสถานะการเข้าใชัระบบ
+     * @return array
      */
-    public function get_singin_status() {
-        return;
+    public function get_sign_status() {
+        /**
+         * เช็คข้อมูลผุ้ใช้งานจากฐานข้อมูล
+         */
+        $sign_status = json_decode($this->session->userdata('sign_status'));
+        $sql = "SELECT * FROM  `my_user`  WHERE  id = ? AND`status` = 0 ";
+        $query = $this->db->query($sql, array($sign_status->id));
+        if ($sign_status->key === md5($query->row()->sec_time)) {
+            return $sign_status;
+        } else {
+            $this->sing_out();
+            die("sign status missing");
+        }
     }
 
     /**
      * 
-     * @param string $user
+     * @param type $user
      * @param string $pass
      * @return string
      */
-    public function get_singin($user, $pass) {
+    public function sign_in($user, $pass) {
         /**
          * ค้นข้อมูลจากชื่อผู้ใช้ รหัสผ่าน และสถานะ
          */
         $sql = "SELECT * FROM  `my_user`  WHERE  user = ? AND val_pass LIKE  ? AND`status` = 0 ";
-        $pass = "%".md5($pass)."%";
-        $query = $this->db->query($sql, array($user,$pass));
+        $pass = "%" . md5($pass) . "%";
+        $query = $this->db->query($sql, array($user, $pass));
         if ($query->num_rows() === 1) {
-            return 'connected';
+            $data = json_encode(array('id' => $query->row()->id, 'user' => $query->row()->user, 'key' => md5($query->row()->sec_time)));
+            $this->session->set_userdata("sign_status", $data);
         } else {
-            return 'unknown';
+            $this->sing_out();
+            die("Sign in missing.");
         }
+    }
+
+    public function name() {
+        $data = json_decode($this->session->userdata('sign_status'));
+        return $data->username;
+    }
+
+    /**
+     * 
+     */
+    public function sing_out() {
+        $this->session->sess_destroy();
     }
 
 }
