@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Testing for orr-projects
+Orr projects Home
 -->
 <html>
     <head>
@@ -8,7 +8,7 @@ Testing for orr-projects
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>orr-projects</title>
+        <title><?php echo $view['title']; ?></title>
         <?php foreach ($css_files as $file): ?>
             <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
         <?php endforeach; ?>
@@ -26,7 +26,7 @@ Testing for orr-projects
             <?php echo anchor(site_url('Welcome/sign_in'), 'เข้าสู่ระบบ', ['title' => 'ไปที่หน้าเข้าระบบอื่นๆ']) ?>
         </div> <div style='height:20px;'></div>  
         <div>
-            <?php echo $output; ?>
+            <?php echo $view['message']; ?>
         </div>
         <div class="jumbotron text-center">
             <h1>หน้าหลักของ อ๋อโปรเจค</h1>
