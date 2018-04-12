@@ -12,9 +12,10 @@
  * @author it
  */
 class Welcome extends CI_Controller {
-    
-    private $view = [];
-    
+
+    private $welcome_message = [];
+    private $sign_data = NULL;
+
     public function __construct() {
         parent::__construct();
         $this->load->helper('url');
@@ -22,9 +23,8 @@ class Welcome extends CI_Controller {
         /**
          * $view 
          */
-        $view['title'] = "Orr projects Home";
-        $view['message'] = "Welcome...";
-        $this->view = $view;
+        $this->sign_data = $this->orr_authorize_model->sign_data;
+        $this->welcome_message = array('sign_status' => $this->sign_data['status'] , 'title' =>"Orr projects Home" , 'topic'=>"Welcome...");    
     }
 
     /**
@@ -33,15 +33,14 @@ class Welcome extends CI_Controller {
      * @return NULL
      */
     public function index() {
-        
-        $this->home((object) ['view' => $this->view, 'js_files' => array(base_url('assets/jquery/jquery-3.2.1.min.js'), base_url('assets/jquery/jquery-3.2.1.min.js')), 'css_files' => array(base_url('assets/bootstrap/css/bootstrap.min.css'))]);
+        $this->home((object) ['welcome_message' => $this->welcome_message, 'js_files' => array(base_url('assets/jquery/jquery-3.2.1.min.js'), base_url('assets/jquery/jquery-3.2.1.min.js')), 'css_files' => array(base_url('assets/bootstrap/css/bootstrap.min.css'))]);
     }
 
     /**
      * singin : 
      * 
      */
-    public function sign_in() {
+    public function sign_in_page() {
         $this->load->view('welcome_sign_in');
     }
 
@@ -49,22 +48,18 @@ class Welcome extends CI_Controller {
      * ตรวจสอบรหัสผู้ใช้งาน จากหน้าจอเข้าระบบ
      * 
      */
-    public function check_in() {
-        $status = $this->orr_authorize_model->sign_in($this->input->post('username'), $this->input->post('password'));
-        $output = "Welcome ";
-        if ($status === "online") {
-            $output = $output . $this->orr_authorize_model->user . " is " . $status;
+    public function sign_in() {
+        $this->orr_authorize_model->sign_in($this->input->post('username'), $this->input->post('password'));
+        $this->index();
+        //$this->home((object) ['message' => $this->message, 'js_files' => array(base_url('assets/jquery/jquery-3.2.1.min.js'), base_url('assets/jquery/jquery-3.2.1.min.js')), 'css_files' => array(base_url('assets/bootstrap/css/bootstrap.min.css'))]);
         }
 
-        $this->home((object) ['output' => $output, 'js_files' => array(base_url('assets/jquery/jquery-3.2.1.min.js'), base_url('assets/jquery/jquery-3.2.1.min.js')), 'css_files' => array(base_url('assets/bootstrap/css/bootstrap.min.css'))]);
-    }
-
-    /**
-     * 
-     * @param type $output
-     */
-    private function home($output) {
-        $this->load->view('welcome_home', (array) $output);
+        /**
+         * 
+         * @param type $message
+         */
+        private function home($message) {
+        $this->load->view('welcome_home', (array) $message);
     }
 
 }
