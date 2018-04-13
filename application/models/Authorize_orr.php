@@ -7,13 +7,13 @@
  * @author Suchart Bunhachirat <suchartbu@gmail.com>
  * @version 2561
  */
-class Orr_authorize_model extends CI_Model {
+class Authorize_orr extends CI_Model {
 
     /**
      * Sign status
      * @var array 
      */
-    public $sign_data = NULL;
+    public $sign_data = ['id' => 0, 'user' => NULL, 'key' => NULL, 'status' => "Unknown"];
 
     /**
      * Class construct
@@ -23,9 +23,9 @@ class Orr_authorize_model extends CI_Model {
         parent::__construct();
         $this->load->library('session');
         $this->load->database('orr-projects');
-        $this->sign_data['status']='Unknown';
+
         if ($this->session->has_userdata('sign_data')) {
-            $this->sign_data = $this->get_sign_data(json_decode($this->session->userdata('sign_data')));
+            $this->sign_data = json_decode($this->session->userdata('sign_data'),TRUE);
         }
     }
 
@@ -33,16 +33,16 @@ class Orr_authorize_model extends CI_Model {
      * สถานะการเข้าใชัระบบ
      * @return array
      */
-    private function get_sign_data($sign_data) {
+    private function set_sign_data() {
         /**
          * เช็คข้อมูลผุ้ใช้งานจากฐานข้อมูล
          */
         $sql = "SELECT * FROM  `my_user`  WHERE  id = ? AND`status` = 0 ";
-        $query = $this->db->query($sql, array($sign_data->id));
-        if ($sign_data->key === $this->sign_key($query->row()->sec_time)) {
+        $query = $this->db->query($sql, array($this->sign_data['id']));
+        if ($sign_data['key '] === $this->sign_key($query->row()->sec_time)) {
             $sign_data['status'] = "Online";
         } else {
-            $sign_data['status'] = "Missing";
+            $sign_data['status'] = "Unusual";
         }
         return $sign_data;
     }
@@ -64,9 +64,12 @@ class Orr_authorize_model extends CI_Model {
             $this->sign_data['id'] = $query->row()->id;
             $this->sign_data['user'] = $query->row()->user;
             $this->sign_data['key'] = $this->sign_key($query->row()->sec_time);
-            $data = json_encode($this->sign_data);
-            $this->session->set_userdata("sign_data", $data);
+            $this->sign_data['status'] = 'Signin';
+        } else {
+            $this->sign_data['status'] = 'Abnormal';
         }
+        $data = json_encode($this->sign_data);
+        $this->session->set_userdata("sign_data", $data);
     }
 
     private function sign_key($value) {
@@ -76,7 +79,7 @@ class Orr_authorize_model extends CI_Model {
     /**
      * 
      */
-    public function sing_out() {
+    public function sign_out() {
         $this->session->sess_destroy();
     }
 
